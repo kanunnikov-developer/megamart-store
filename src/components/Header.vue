@@ -1,6 +1,12 @@
 <script setup>
+import { ref } from "vue";
 import Line from "../share/Line.vue";
-import Button from "../share/Button.vue";
+
+const search = ref("");
+
+function getSearch(text) {
+  console.log(search.value);
+}
 </script>
 
 <template>
@@ -15,6 +21,8 @@ import Button from "../share/Button.vue";
           <input
             type="text"
             placeholder="Search essentials, groceries and more..."
+            v-model="search"
+            @keyup.enter="getSearch(search)"
           />
         </div>
         <div class="profile">
