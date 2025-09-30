@@ -1,8 +1,9 @@
 <script setup>
-import { ref } from "vue";
+import { ref, inject } from "vue";
 import Line from "../share/Line.vue";
 
 const search = ref("");
+const { cart } = inject("cart");
 
 function getSearch(text) {
   console.log(search.value);
@@ -32,7 +33,12 @@ function getSearch(text) {
           </button>
           <Line />
           <button class="profile-button">
-            <img src="../icons/Buy.svg" alt="Cart" class="img-profile" />
+            <div class="cart-icon-container">
+              <img src="../icons/Buy.svg" alt="Cart" class="img-profile" />
+              <span v-if="cart.length > 0" class="cart-counter">{{
+                cart.length
+              }}</span>
+            </div>
             <p>Cart</p>
           </button>
         </div>
@@ -106,5 +112,28 @@ button {
 button:hover {
   background: var(--bg-3-color);
   transition: all 0.1s ease-in;
+}
+
+.cart-icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-counter {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4444;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 20px;
+  line-height: 1;
 }
 </style>

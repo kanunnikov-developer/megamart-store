@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { inject, ref } from "vue";
 import Button from "../share/Button.vue";
 
 const productsData = ref([
@@ -34,6 +34,8 @@ const productsData = ref([
     img: "/img/Phone-5.svg",
   },
 ]);
+
+let { cart, addToCart } = inject("cart");
 </script>
 
 <template>
@@ -49,7 +51,7 @@ const productsData = ref([
           <s v-if="product.oldPrice">{{ product.oldPrice }} ₽</s>
         </div>
         <div class="border"></div>
-        <Button>Купить</Button>
+        <Button @click="addToCart(product)">Купить</Button>
       </div>
     </div>
   </div>
