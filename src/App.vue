@@ -2,9 +2,10 @@
 import ZeroHero from "./components/ZeroHero.vue";
 import Header from "./components/Header.vue";
 import Hero from "./components/Hero.vue";
-import Products from "./components/Products.vue";
+import ProductsList from "./components/ProductsList.vue";
+import CategoriesList from "./components/CategoriesList.vue";
 import { provide, ref } from "vue";
-import Categories from "./components/Categories.vue";
+import TitleBlock from "./components/TitleBlock.vue";
 
 let cart = ref([]);
 
@@ -23,8 +24,12 @@ provide("cart", {
   <Header />
   <div class="border"></div>
   <Hero />
-  <Products />
-  <Categories />
+  <TitleBlock title="Grab the best deal on" accent-text="Smartphones"
+    ><ProductsList
+  /></TitleBlock>
+  <TitleBlock title="Shop From" accent-text="Top Categories"
+    ><CategoriesList
+  /></TitleBlock>
 </template>
 
 <style scoped>

@@ -1,30 +1,39 @@
 <script setup>
-import ProductsList from "./ProductsList.vue";
+const data = defineProps({
+  title: String,
+  accentText: String,
+  buttonText: {
+    type: String,
+    default: "View Al",
+  },
+});
 </script>
 
 <template>
-  <div class="products">
+  <div class="title">
     <div class="container">
-      <div class="products-block">
+      <div class="title-block">
         <div class="main-text">
-          <h3>Grab the best deal on <span>Smartphones</span></h3>
+          <h3>
+            {{ data.title }} <span>{{ data.accentText }}</span>
+          </h3>
           <button class="button">
-            View AL <img src="../icons/Left.svg" alt="Left" />
+            {{ data.buttonText }} <img src="../icons/Left.svg" alt="Left" />
           </button>
         </div>
         <div class="border"></div>
-        <ProductsList />
+        <slot></slot>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.products {
+.title {
   margin-top: 30px;
 }
 
-.products-block {
+.title-block {
   display: flex;
   flex-direction: column;
   gap: 15px;
